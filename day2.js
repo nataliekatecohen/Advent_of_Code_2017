@@ -16,7 +16,7 @@ let rows = [
 "588	345	67	286	743	54	802	776	29	44	107	63	303	372	41	810",
 "128	2088	3422	111	3312	740	3024	1946	920	131	112	477	3386	2392	1108	2741"
 ];
-
+//PART 1
 let sum = 0;
 for (let rowStr of rows){
   let vals = rowStr.split(/\s/g).map(val => Number.parseInt(val));
@@ -26,6 +26,22 @@ for (let rowStr of rows){
     if (val < min) min = val;
   }
   sum += max - min;
+}
+
+console.log(sum);
+
+//PART 2
+let sum = 0;
+for (let rowStr of rows){
+  let vals = rowStr.split(/\s/g).map(val => Number.parseInt(val));
+  for (let i = 0; i < vals.length; ++i) {
+    for (let j = 0; j < vals.length; ++j){
+      if(i == j) continue;
+      if (vals[i] % vals[j] == 0){
+        sum += vals[i] / vals[j];
+      }
+    }
+  }
 }
 
 console.log(sum);
